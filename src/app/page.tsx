@@ -1,8 +1,9 @@
-import { addContractor, getContractors } from "../actions/actions";
+import { mainService } from "@/features/main/instance";
+import { addContractor } from "../actions/actions";
 
 export default async function Home() {
-  const data = await getContractors();
-  const contractors = data.map((name) => name.name)
+  const data = await mainService.getContractors();
+  const contractors = data.map((name) => name.name);
 
   return (
     <>
@@ -32,9 +33,7 @@ export default async function Home() {
           Send
         </button>
       </form>
-      <ul>
-        {contractors}
-      </ul>
+      <ul>{contractors}</ul>
     </>
   );
 }

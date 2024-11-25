@@ -4,16 +4,16 @@ import { revalidatePath } from "next/cache";
 import { db } from "@/db/drizzle";
 import { contractors } from "@/db/schema";
 
-type Contractor = {
+export type Contractor = {
   id: number;
   name: string;
   email: string;
 };
 
-export const getContractors = async () => {
-  const data: Contractor[] = await db.select().from(contractors);
-  return data;
-};
+// export const getContractors = async () => {
+//   const data: Contractor[] = await db.select().from(contractors);
+//   return data;
+// };
 
 export async function addContractor(formData: FormData) {
   const id = formData.get("id") as any;
