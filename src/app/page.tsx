@@ -9,21 +9,21 @@ export default async function Home() {
     <main className="container mx-auto bg-slate-300">
       <form action={addContractor}>
         <input
-          className="input input-bordered input-accent w-full m-3 rounded-md"
+          className="input input-bordered input-accent m-3 rounded-md"
           placeholder="id"
           type="text"
           id="id"
           name="id"
         />
         <input
-          className="input input-bordered input-accent w-full m-3 rounded-md"
+          className="input input-bordered input-accent m-3 rounded-md"
           placeholder="name"
           type="text"
           id="name"
           name="name"
         />
         <input
-          className="input input-bordered input-accent w-full m-3 rounded-md"
+          className="input input-bordered input-accent m-3 rounded-md"
           placeholder="email"
           type="email"
           id="email"
