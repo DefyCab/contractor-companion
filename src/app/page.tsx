@@ -6,7 +6,7 @@ export default async function Home() {
   const contractors = data.map((name) => name.name);
 
   return (
-    <>
+    <main className="container mx-auto bg-slate-300">
       <form action={addContractor}>
         <input
           className="input input-bordered input-accent w-full m-3 rounded-md"
@@ -29,11 +29,11 @@ export default async function Home() {
           id="email"
           name="email"
         />
-        <button className="p-4" type="submit">
+        <button className="p-2 bg-slate-500 rounded" type="submit">
           Send
         </button>
       </form>
       <ul>{contractors}</ul>
-    </>
+    </main>
   );
 }

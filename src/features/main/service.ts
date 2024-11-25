@@ -5,7 +5,10 @@ export function createService(db: any) {
 
   return {
     getContractors: async () => {
-        return await repository.getContractors()
-    }
-  }
+      return await repository.getContractors();
+    },
+    sendContractor: async (id: any, name: string, email: string) => {
+      await repository.addContrator(id, name, email);
+    },
+  };
 }

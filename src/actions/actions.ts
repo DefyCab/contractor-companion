@@ -1,19 +1,12 @@
 "use server";
-import { eq, not } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
-import { db } from "@/db/drizzle";
-import { contractors } from "@/db/schema";
+import { mainService } from "@/features/main/instance";
 
 export type Contractor = {
   id: number;
   name: string;
   email: string;
 };
-
-// export const getContractors = async () => {
-//   const data: Contractor[] = await db.select().from(contractors);
-//   return data;
-// };
 
 export async function addContractor(formData: FormData) {
   const id = formData.get("id") as any;
@@ -25,19 +18,19 @@ export async function addContractor(formData: FormData) {
   if (!content) {
     return;
   }
-  await sendContrator(id, name, email);
+  await mainService.sendContractor(id, name, email);
 
   revalidatePath("/");
 }
 
-export const sendContrator = async (
-  id: number,
-  name: string,
-  email: string
-) => {
-  await db.insert(contractors).values({
-    id: id,
-    name: name,
-    email: email,
-  });
-};
+// export const sendContrator = async (
+//   id: number,
+//   name: string,
+//   email: string
+// ) => {
+//   await db.insert(contractors).values({
+//     id: id,
+//     name: name,
+//     email: email,
+//   });
+// };
