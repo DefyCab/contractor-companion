@@ -8,14 +8,14 @@ export default function Root() {
     redirect("/home");
   }
   return (
-    <main className="h-screen bg-slate-100 flex justify-center items-center">
+    <main className="h-screen bg-slate-50 flex justify-center items-center">
       <section className="hero p-4">
         <div className="flex flex-col text-center">
           <div className="">
             <h1 className="text-5xl font-bold">Contractor Companion</h1>
             <p className="py-6">Your trusted partner in every situation!</p>
             <button
-              className="bg-slate-500 rounded my-2 px-8 py-4"
+              className="bg-slate-400 rounded my-2 px-8 py-4"
               onClick={onClick}
             >
               Start!
