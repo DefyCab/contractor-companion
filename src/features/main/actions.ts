@@ -2,11 +2,7 @@
 import { revalidatePath } from "next/cache";
 import { mainService } from "@/features/main/instance";
 
-export type Contractor = {
-  id: number;
-  name: string;
-  email: string;
-};
+
 
 export async function addContractor(formData: FormData) {
   const id = formData.get("id") as any;
@@ -22,15 +18,3 @@ export async function addContractor(formData: FormData) {
 
   revalidatePath("/");
 }
-
-// export const sendContrator = async (
-//   id: number,
-//   name: string,
-//   email: string
-// ) => {
-//   await db.insert(contractors).values({
-//     id: id,
-//     name: name,
-//     email: email,
-//   });
-// };

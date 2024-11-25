@@ -1,4 +1,4 @@
-import { Contractor } from "@/actions/actions";
+import { Contractor } from "./types"
 import { contractors } from "@/db/schema";
 
 export function createRepository(db: any) {

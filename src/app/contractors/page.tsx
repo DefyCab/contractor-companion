@@ -1,7 +1,7 @@
 import { mainService } from "@/features/main/instance";
-import { addContractor } from "../../actions/actions";
+import { addContractor } from "../../features/main/actions";
 
-export default async function Home() {
+export default async function Page() {
   const data = await mainService.getContractors();
   const contractors = data.map((name) => name.name);
 
