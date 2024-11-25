@@ -2,7 +2,9 @@
 import { revalidatePath } from "next/cache";
 import { mainService } from "@/features/main/instance";
 
-
+export async function roomInformation(){
+  
+}
 
 export async function addContractor(formData: FormData) {
   const id = formData.get("id") as any;
