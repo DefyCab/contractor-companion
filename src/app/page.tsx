@@ -1,39 +1,37 @@
-import { mainService } from "@/features/main/instance";
-import { addContractor } from "../actions/actions";
+"use client";
 
-export default async function Home() {
-  const data = await mainService.getContractors();
-  const contractors = data.map((name) => name.name);
+import { redirect } from "next/navigation";
+import Image from "next/image";
 
+export default function Root() {
+  function onClick() {
+    redirect("/home");
+  }
   return (
-    <main className="container mx-auto bg-slate-300">
-      <form action={addContractor}>
-        <input
-          className="input input-bordered input-accent m-3 rounded-md"
-          placeholder="id"
-          type="text"
-          id="id"
-          name="id"
-        />
-        <input
-          className="input input-bordered input-accent m-3 rounded-md"
-          placeholder="name"
-          type="text"
-          id="name"
-          name="name"
-        />
-        <input
-          className="input input-bordered input-accent m-3 rounded-md"
-          placeholder="email"
-          type="email"
-          id="email"
-          name="email"
-        />
-        <button className="p-2 bg-slate-500 rounded" type="submit">
-          Send
-        </button>
-      </form>
-      <ul>{contractors}</ul>
+    <main className="h-screen bg-slate-100 flex justify-center items-center">
+      <section className="hero p-4">
+        <div className="hero-content flex flex-col text-center">
+          <div className="">
+            <h1 className="text-5xl font-bold">Contractor Companion</h1>
+            <p className="py-6">Your trusted partner in every situation!</p>
+            <button
+              className="bg-slate-500 rounded my-2 px-8 py-4"
+              onClick={onClick}
+            >
+              Start!
+            </button>
+          </div>
+          <div className="flex justify-center">
+            <Image
+              src="https://images.unsplash.com/photo-1717281234297-3def5ae3eee1?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              width={200}
+              height={300}
+              alt="Contractor Hero Picture"
+              className="pt-0 mt-6 shadow-2xl rounded-lg"
+            />
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
