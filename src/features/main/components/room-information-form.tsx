@@ -1,6 +1,31 @@
+"use client";
+
 import { getRoomData } from "../actions";
+import { useState } from "react";
 
 export function RoomInformationForm() {
+  const [inputFields, setInputFields] = useState([
+    {
+      className: "",
+      placeholder: "",
+      type: "",
+      id: "",
+      name: "",
+    },
+  ]);
+
+  const addWallField = () => {
+    const wallfield = {
+      className: "",
+      placeholder: "",
+      type: "",
+      id: "",
+      name: "",
+    };
+
+    setInputFields([...inputFields, wallfield]);
+  };
+
   return (
     <main className="bg-yellow-50">
       <div className="flex h-screen justify-center">
@@ -15,16 +40,26 @@ export function RoomInformationForm() {
               name="ceilingheight"
             />
           </article>
-          <article className="flex flex-col p-4">
-            <label className="text-slate-500">number of walls</label>
-            <input
-              className="border-slate-300 p-2"
-              placeholder="amount"
-              type="text"
-              id="numberOfWalls"
-              name="numberOfWalls"
-            />
-          </article>
+          {inputFields.map((input, index) => {
+            return (
+              <div key={index}>
+                <label className="text-slate-500">number of walls</label>
+                <input
+                  className="border-slate-300 p-2"
+                  placeholder="amount"
+                  type="text"
+                  id="numberOfWalls"
+                  name="numberOfWalls"
+                />
+              </div>
+            );
+          })}
+          <button
+            onClick={addWallField}
+            className="bg-slate-400 rounded my-2 px-8 py-4>Add Walls"
+          >
+            Add Wall
+          </button>
           <article className="flex flex-col p-4">
             <label className="text-slate-500">wall length</label>
             <input
