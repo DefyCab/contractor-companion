@@ -28,6 +28,12 @@ export function RoomInformationForm() {
     }
   };
 
+  const removeWallField = () => {
+    const removeWallFields = wallFields.slice(0, -1);
+
+    setWallFields(removeWallFields);
+  };
+
   return (
     <main className="bg-slate-100">
       <h1 className="text-center text-xl font-semibold">Room Information</h1>
@@ -70,7 +76,7 @@ export function RoomInformationForm() {
                 Add Wall
               </button>
               <button
-                // onClick={addWallField}
+                onClick={removeWallField}
                 className="bg-slate-400 rounded my-2 px-4 py-2"
               >
                 Remove Wall
