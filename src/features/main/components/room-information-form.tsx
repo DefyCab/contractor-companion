@@ -30,6 +30,7 @@ export function RoomInformationForm() {
 
   return (
     <main className="bg-slate-100">
+      <h1 className="text-center">Room Information</h1>
       <div className="flex h-screen justify-center">
         <form action={getRoomData}>
           <article className="flex flex-col p-4">
@@ -42,26 +43,38 @@ export function RoomInformationForm() {
               name="ceilingheight"
             />
           </article>
-          {wallFields.map((input, index) => {
-            return (
-              <div key={index}>
-                <label className="text-slate-600">{`Wall ${index + 1}`}</label>
-                <input
-                  className="border-slate-300 p-2 m-1"
-                  placeholder="length"
-                  type="text"
-                  id="wallLength"
-                  name={`wall${index}`}
-                />
-              </div>
-            );
-          })}
-          <button
-            onClick={addWallField}
-            className="bg-slate-400 rounded my-2 px-8 py-4>Add Walls"
-          >
-            Add Wall
-          </button>
+          <article className="flex flex-col p-4">
+            {wallFields.map((input, index) => {
+              return (
+                <div key={index}>
+                  <label className="text-slate-600">{`Wall ${
+                    index + 1
+                  }`}</label>
+                  <input
+                    className="border-slate-300 p-2 m-1"
+                    placeholder="length"
+                    type="text"
+                    id="wallLength"
+                    name={`wall${index}`}
+                  />
+                </div>
+              );
+            })}
+            <div className="flex flex-row gap-4 justify-between">
+              <button
+                onClick={addWallField}
+                className="bg-slate-400 rounded my-2 px-4 py-2"
+              >
+                Add Wall
+              </button>
+              <button
+                // onClick={addWallField}
+                className="bg-slate-400 rounded my-2 px-4 py-2"
+              >
+                Remove Wall
+              </button>
+            </div>
+          </article>
           <article className="flex flex-col p-4">
             <label className="text-slate-600">number of windows</label>
             <p className="text-sm text-slate-400">Double window count as 2</p>

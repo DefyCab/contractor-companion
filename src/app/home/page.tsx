@@ -2,8 +2,8 @@ import { RoomInformationForm } from "@/features/main/components/room-information
 
 export default function Home() {
   return (
-    <>
-    <RoomInformationForm />
-    </>
+    <div className="flex justify-center">
+      <RoomInformationForm />
+    </div>
   );
 }
