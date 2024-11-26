@@ -30,18 +30,20 @@ export function RoomInformationForm() {
 
   return (
     <main className="bg-slate-100">
-      <h1 className="text-center">Room Information</h1>
+      <h1 className="text-center text-xl font-semibold">Room Information</h1>
       <div className="flex h-screen justify-center">
         <form action={getRoomData}>
           <article className="flex flex-col p-4">
-            <label className="text-slate-600">ceiling height</label>
-            <input
-              className="border-slate-300 p-2"
-              placeholder="m"
-              type="text"
-              id="ceilingheight"
-              name="ceilingheight"
-            />
+            <div>
+              <label className="text-slate-600">Height</label>
+              <input
+                className="border-slate-300 p-2"
+                placeholder="m"
+                type="text"
+                id="ceilingheight"
+                name="ceilingheight"
+              />
+            </div>
           </article>
           <article className="flex flex-col p-4">
             {wallFields.map((input, index) => {
