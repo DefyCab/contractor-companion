@@ -1,4 +1,6 @@
-export function calculatePaint() {
+import { RoomData } from "./types";
+
+export function calculatePaint(roomData: RoomData) {
   // indoors
 
   //assumption 2.70

@@ -6,16 +6,16 @@ export function RoomInformationForm() {
           <article className="flex flex-col p-4">
             <input
               className="border-slate-300 p-2"
-              placeholder="enter ceiling heigth"
+              placeholder="enter ceiling height"
               type="text"
-              id="ceilingHeigth"
-              name="ceilingHeigth"
+              id="ceilingheight"
+              name="ceilingheight"
             />
           </article>
           <article className="flex flex-col p-4">
             <input
               className="border-slate-300 p-2"
-              placeholder="enter wallheigth"
+              placeholder="enter wallheight"
               type="text"
               id="wallLength"
               name="wallLength"

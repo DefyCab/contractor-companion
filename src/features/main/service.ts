@@ -1,4 +1,6 @@
+import { calculatePaint } from "./logic";
 import { createRepository } from "./repository";
+import { RoomData } from "./types";
 
 export function createService(db: any) {
   const repository = createRepository(db);
@@ -8,7 +10,10 @@ export function createService(db: any) {
       return await repository.getContractors();
     },
     sendContractor: async (id: any, name: string, email: string) => {
-      await repository.addContrator(id, name, email);
+      return await repository.addContrator(id, name, email);
+    },
+    sendRoomData: async (roomData: RoomData) => {
+      return calculatePaint(roomData);
     },
   };
 }
