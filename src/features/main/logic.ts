@@ -4,8 +4,7 @@ export function calculatePaint(roomData: RoomData) {
   // standardmått dörr 1.76 kvm
   // standardmått fönster 0.65 kvm
 
-console.log(roomData);
-
+  console.log(roomData);
 
   let ceilingHeight = roomData.ceilingHeight;
 
@@ -14,7 +13,7 @@ console.log(roomData);
   }
 
   const surfaceInSquareMeters =
-    ceilingHeight * roomData.wallLength * roomData.numberOfWalls -
+    ceilingHeight * roomData.wallLength -
     (roomData.numberOfDoors * 1.76 + roomData.numberOfWindows * 0.65);
 
   console.log(surfaceInSquareMeters);

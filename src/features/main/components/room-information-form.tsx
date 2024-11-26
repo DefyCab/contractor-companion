@@ -23,7 +23,9 @@ export function RoomInformationForm() {
       name: "",
     };
 
-    setWallFields([...wallFields, wallfield]);
+    if (wallFields.length < 4) {
+      setWallFields([...wallFields, wallfield]);
+    }
   };
 
   return (
