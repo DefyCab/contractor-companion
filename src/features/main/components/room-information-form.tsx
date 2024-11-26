@@ -4,7 +4,7 @@ import { getRoomData } from "../actions";
 import { useState } from "react";
 
 export function RoomInformationForm() {
-  const [inputFields, setInputFields] = useState([
+  const [wallFields, setWallFields] = useState([
     {
       className: "",
       placeholder: "",
@@ -23,15 +23,15 @@ export function RoomInformationForm() {
       name: "",
     };
 
-    setInputFields([...inputFields, wallfield]);
+    setWallFields([...wallFields, wallfield]);
   };
 
   return (
-    <main className="bg-yellow-50">
+    <main className="bg-slate-100">
       <div className="flex h-screen justify-center">
         <form action={getRoomData}>
           <article className="flex flex-col p-4">
-            <label className="text-slate-500">ceiling height</label>
+            <label className="text-slate-600">ceiling height</label>
             <input
               className="border-slate-300 p-2"
               placeholder="m"
@@ -40,16 +40,16 @@ export function RoomInformationForm() {
               name="ceilingheight"
             />
           </article>
-          {inputFields.map((input, index) => {
+          {wallFields.map((input, index) => {
             return (
               <div key={index}>
-                <label className="text-slate-500">number of walls</label>
+                <label className="text-slate-600">{`Wall ${index + 1}`}</label>
                 <input
-                  className="border-slate-300 p-2"
-                  placeholder="amount"
+                  className="border-slate-300 p-2 m-1"
+                  placeholder="length"
                   type="text"
-                  id="numberOfWalls"
-                  name="numberOfWalls"
+                  id="wallLength"
+                  name={`wall${index}`}
                 />
               </div>
             );
@@ -61,17 +61,7 @@ export function RoomInformationForm() {
             Add Wall
           </button>
           <article className="flex flex-col p-4">
-            <label className="text-slate-500">wall length</label>
-            <input
-              className="border-slate-300 p-2"
-              placeholder="m"
-              type="text"
-              id="wallLength"
-              name="wallLength"
-            />
-          </article>
-          <article className="flex flex-col p-4">
-            <label className="text-slate-500">number of windows</label>
+            <label className="text-slate-600">number of windows</label>
             <p className="text-sm text-slate-400">Double window count as 2</p>
             <input
               className="border-slate-300 p-2"
@@ -82,7 +72,7 @@ export function RoomInformationForm() {
             />
           </article>
           <article className="flex flex-col p-4">
-            <label className="text-slate-500">number of doors</label>
+            <label className="text-slate-600">number of doors</label>
             <input
               className="border-slate-300 p-2"
               placeholder="amount"

@@ -4,6 +4,9 @@ export function calculatePaint(roomData: RoomData) {
   // standardmått dörr 1.76 kvm
   // standardmått fönster 0.65 kvm
 
+console.log(roomData);
+
+
   let ceilingHeight = roomData.ceilingHeight;
 
   if (ceilingHeight === 0) {
