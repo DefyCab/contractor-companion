@@ -22,9 +22,9 @@ export async function addContractor(formData: FormData) {
 export async function getRoomData(formData: FormData) {
   const ceilingHeight = Number(formData.get("ceilingheight"))
   const wallLength = Number(formData.get("wallLength"));
-  const numberOfWalls = Number(formData.get("numberOfWindows"));
-  const numberOfWindows = Number(formData.get("numberOfDoors"));
-  const numberOfDoors = Number(formData.get("numbefOfCoats"));
+  const numberOfWalls = Number(formData.get("numberOfWalls"));
+  const numberOfWindows = Number(formData.get("numberOfWindows"));
+  const numberOfDoors = Number(formData.get("numberOfDoors"));
 
   const roomData = {
     ceilingHeight,
