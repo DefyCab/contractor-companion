@@ -1,10 +1,14 @@
 "use client";
 
-import { getRoomData } from "../actions";
+import { getRoomData, roomInformation } from "../actions";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { RoomData } from "../types";
+import { calculatePaint } from "../logic";
 
 export function RoomInformationForm() {
+  const [room, setRoom] = useState<number>();
+ 
   const {
     register,
     handleSubmit,
@@ -12,7 +16,7 @@ export function RoomInformationForm() {
     reset,
     getValues,
   } = useForm();
-
+  
   const [wallFields, setWallFields] = useState([
     {
       className: "",
@@ -44,7 +48,32 @@ export function RoomInformationForm() {
   };
 
   const onSubmit = (data: any) => {
-    console.log(data);
+    let wallLength = 0;
+
+    if (data.wall0) {
+      wallLength = wallLength + Number(data.wall0);
+    }
+
+    if (data.wall1) {
+      wallLength = wallLength + Number(data.wall1);
+    }
+    if (data.wall2) {
+      wallLength = wallLength + Number(data.wall2);
+    }
+    if (data.wall3) {
+      wallLength = wallLength + Number(data.wall3);
+    }
+
+    console.log(wallLength);
+
+    const roomData: RoomData = {
+      ceilingHeight: data.ceilingHeight,
+      wallLength: wallLength,
+      numberOfWindows: data.numberOfWindows,
+      numberOfDoors: data.numberOfDoors,
+    };
+
+    setRoom(calculatePaint(roomData));
   };
 
   return (
@@ -131,6 +160,7 @@ export function RoomInformationForm() {
           </div>
         </form>
       </div>
+      <div>{room}</div>
     </main>
   );
 }
