@@ -43,7 +43,7 @@ export function RoomInformationForm() {
             <div>
               <label className="text-slate-600">Height</label>
               <input
-                className="border-slate-300 p-2"
+                className="border-slate-300 border-2 outline-slate-400 p-2 rounded-sm"
                 placeholder="m"
                 type="text"
                 id="ceilingheight"
@@ -59,7 +59,7 @@ export function RoomInformationForm() {
                     index + 1
                   }`}</label>
                   <input
-                    className="border-slate-300 p-2 m-1"
+                    className="border-slate-300 border-2 outline-slate-400 p-2 rounded-sm m-1"
                     placeholder="length"
                     type="text"
                     id="wallLength"
@@ -87,7 +87,7 @@ export function RoomInformationForm() {
             <label className="text-slate-600">number of windows</label>
             <p className="text-sm text-slate-400">Double window count as 2</p>
             <input
-              className="border-slate-300 p-2"
+              className="border-slate-300 border-2 outline-slate-400 p-2 rounded-sm"
               placeholder="amount"
               type="text"
               id="numberOfWindows"
@@ -97,7 +97,7 @@ export function RoomInformationForm() {
           <article className="flex flex-col p-4">
             <label className="text-slate-600">number of doors</label>
             <input
-              className="border-slate-300 p-2"
+              className="border-slate-300 border-2 outline-slate-400 p-2 rounded-sm"
               placeholder="amount"
               type="text"
               id="numberOfDoors"
