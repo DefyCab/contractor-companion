@@ -194,7 +194,7 @@ export function RoomInformationForm() {
       <div className="flex justify-center">
         <ul>
           {rooms.map((room, index) => (
-            <li key={index} className="flex items-center space-x-2">
+            <li key={index} className="flex items-center space-x-1">
               <House />
               <p className="font-semibold">Room</p>
               <p className="font-bold text-blue-600"> {room} Liters</p>
@@ -202,9 +202,12 @@ export function RoomInformationForm() {
           ))}
         </ul>
       </div>
-      <div className="flex justify-center">
+      <div className="flex justify-center items-center space-x-1">
         <PaintBucket />
-        <p className="font-semibold" >{totalLiters ? `${totalLiters} Liters Total` : `${"__"}Liters Total`}</p>
+        <p className="font-semibold">Total </p>
+        <p className="font-bold text-green-600">
+          {totalLiters ? `${totalLiters} Liters` : ""}
+        </p>
       </div>
     </main>
   );
