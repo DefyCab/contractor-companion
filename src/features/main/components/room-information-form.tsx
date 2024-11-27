@@ -2,8 +2,17 @@
 
 import { getRoomData } from "../actions";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 
 export function RoomInformationForm() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+    getValues,
+  } = useForm();
+
   const [wallFields, setWallFields] = useState([
     {
       className: "",
@@ -34,20 +43,25 @@ export function RoomInformationForm() {
     setWallFields(removeWallFields);
   };
 
+  const onSubmit = (data: any) => {
+    console.log(data);
+  };
+
   return (
     <main className="bg-slate-100">
       <h1 className="text-center text-xl font-semibold">Room Information</h1>
       <div className="flex h-screen justify-center">
-        <form action={getRoomData}>
+        <form action={getRoomData} onSubmit={handleSubmit(onSubmit)}>
           <article className="flex flex-col p-4">
             <div>
               <label className="text-slate-600">Height</label>
               <input
+                {...register("ceilingHeight")}
                 className="border-slate-300 border-2 outline-slate-400 p-2 rounded-sm"
                 placeholder="m"
                 type="text"
-                id="ceilingheight"
-                name="ceilingheight"
+                id="ceilingHeight"
+                name="ceilingHeight"
               />
             </div>
           </article>
@@ -59,6 +73,7 @@ export function RoomInformationForm() {
                     index + 1
                   }`}</label>
                   <input
+                    {...register(`wall${index}`)}
                     className="border-slate-300 border-2 outline-slate-400 p-2 rounded-sm m-1"
                     placeholder="length"
                     type="text"
@@ -87,6 +102,7 @@ export function RoomInformationForm() {
             <label className="text-slate-600">number of windows</label>
             <p className="text-sm text-slate-400">Double window count as 2</p>
             <input
+              {...register("numberOfWindows")}
               className="border-slate-300 border-2 outline-slate-400 p-2 rounded-sm"
               placeholder="amount"
               type="text"
@@ -97,6 +113,7 @@ export function RoomInformationForm() {
           <article className="flex flex-col p-4">
             <label className="text-slate-600">number of doors</label>
             <input
+              {...register("numberOfDoors")}
               className="border-slate-300 border-2 outline-slate-400 p-2 rounded-sm"
               placeholder="amount"
               type="text"
@@ -104,18 +121,9 @@ export function RoomInformationForm() {
               name="numberOfDoors"
             />
           </article>
-          {/* <article className="flex flex-col p-4">
-            <input
-              className="border-slate-300 p-2"
-              placeholder="number of coats"
-              type="text"
-              id="numbefOfCoats"
-              name="numberOfCoats"
-            />
-          </article> */}
           <div className="flex justify-center">
             <button
-              className="bg-slate-400 rounded my-2 px-8 py-4"
+              className="bg-slate-400 rounded my-2 px-4 py-2"
               type="submit"
             >
               Send
