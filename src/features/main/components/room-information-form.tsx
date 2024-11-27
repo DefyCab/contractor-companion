@@ -5,7 +5,14 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { RoomData } from "../types";
 import { calculatePaint } from "../logic";
-import { PaintBucket, House, Ruler, HousePlus } from "lucide-react";
+import {
+  PaintBucket,
+  House,
+  Ruler,
+  HousePlus,
+  PanelsTopLeft,
+  DoorOpen,
+} from "lucide-react";
 
 export function RoomInformationForm() {
   const [litersPerRoom, setLitersPerRoom] = useState<number | undefined>(
@@ -137,30 +144,33 @@ export function RoomInformationForm() {
               </button>
             </div>
           </article>
-          <article className="flex flex-col p-4">
-            <label className="text-slate-600">number of windows</label>
-            <p className="text-sm text-slate-400">Double window count as 2</p>
+          <article className="flex justify-between p-2">
+            <div className="flex mr-4 items-center justify-center">
+              <PanelsTopLeft />
+            </div>
             <input
               {...register("numberOfWindows")}
               className="border-slate-300 border-2 outline-slate-400 p-2 rounded-sm"
-              placeholder="amount"
+              placeholder="number of windows"
               type="text"
               id="numberOfWindows"
               name="numberOfWindows"
             />
           </article>
-          <article className="flex flex-col p-4">
-            <label className="text-slate-600">number of doors</label>
+          <article className="flex justify-between p-2">
+            <div className="flex mr-4 items-center justify-center">
+              <DoorOpen />
+            </div>
             <input
               {...register("numberOfDoors")}
               className="border-slate-300 border-2 outline-slate-400 p-2 rounded-sm"
-              placeholder="amount"
+              placeholder="number of doors"
               type="text"
               id="numberOfDoors"
               name="numberOfDoors"
             />
           </article>
-          <div className="flex flex-row gap-4 justify-between p-4">
+          <div className="flex flex-row gap-4 justify-between">
             <button
               className="bg-blue-300 rounded my-2 px-4 py-2"
               type="submit"
@@ -194,7 +204,7 @@ export function RoomInformationForm() {
       </div>
       <div className="flex justify-center">
         <PaintBucket />
-        <p className="font-semibold pl-2">{totalLiters} Total</p>
+        <p className="font-semibold" >{totalLiters ? `${totalLiters} Liters Total` : `${"__"}Liters Total`}</p>
       </div>
     </main>
   );
