@@ -99,12 +99,12 @@ export function RoomInformationForm() {
         <form action={getRoomData} onSubmit={handleSubmit(onSubmit)}>
           <article className="flex justify-between p-2">
             <div className="flex">
-              <div className="flex mr-4 items-center justify-center">
+              <div className="flex mr-2 items-center justify-center">
                 <Ruler />
               </div>
               <input
                 {...register("ceilingHeight")}
-                className="border-slate-300 border-2 outline-slate-400 p-2 rounded-sm"
+                className="border-slate-300 border-2 outline-slate-400 p-2 rounded-sm shadow-md"
                 placeholder="height m"
                 type="text"
                 id="ceilingHeight"
@@ -116,12 +116,12 @@ export function RoomInformationForm() {
             {wallFields.map((input, index) => {
               return (
                 <div className="flex" key={index}>
-                  <div className="flex mr-4 items-center justify-center">
+                  <div className="flex mr-2 items-center justify-center">
                     <HousePlus />
                   </div>
                   <input
                     {...register(`wall${index}`)}
-                    className="border-slate-300 border-2 outline-slate-400 p-2 rounded-sm my-0.5"
+                    className="border-slate-300 border-2 outline-slate-400 p-2 rounded-sm my-0.5 shadow-md"
                     placeholder="wall length m"
                     type="text"
                     id="wallLength"
@@ -146,12 +146,12 @@ export function RoomInformationForm() {
             </div>
           </article>
           <article className="flex justify-between p-2">
-            <div className="flex mr-4 items-center justify-center">
+            <div className="flex mr-2 items-center justify-center">
               <PanelsTopLeft />
             </div>
             <input
               {...register("numberOfWindows")}
-              className="border-slate-300 border-2 outline-slate-400 p-2 rounded-sm"
+              className="border-slate-300 border-2 outline-slate-400 p-2 rounded-sm shadow-md"
               placeholder="number of windows"
               type="text"
               id="numberOfWindows"
@@ -159,12 +159,12 @@ export function RoomInformationForm() {
             />
           </article>
           <article className="flex justify-between p-2">
-            <div className="flex mr-4 items-center justify-center">
+            <div className="flex  items-center justify-center">
               <DoorOpen />
             </div>
             <input
               {...register("numberOfDoors")}
-              className="border-slate-300 border-2 outline-slate-400 p-2 rounded-sm"
+              className="border-slate-300 border-2 outline-slate-400 p-2 rounded-sm shadow-md"
               placeholder="number of doors"
               type="text"
               id="numberOfDoors"
