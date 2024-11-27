@@ -6,9 +6,14 @@ import { useForm } from "react-hook-form";
 import { RoomData } from "../types";
 import { calculatePaint } from "../logic";
 import { PaintBucket } from "lucide-react";
+import { House } from "lucide-react";
 
 export function RoomInformationForm() {
-  const [room, setRoom] = useState<number>();
+  // const [litersPerRoom, setLitersPerRoom] = useState<number>();
+  const [litersPerRoom, setLitersPerRoom] = useState<number | undefined>(
+    undefined
+  );
+  const [rooms, setRooms] = useState<number[]>([]);
 
   const {
     register,
@@ -72,7 +77,13 @@ export function RoomInformationForm() {
       numberOfDoors: data.numberOfDoors,
     };
 
-    setRoom(calculatePaint(roomData));
+    setLitersPerRoom(calculatePaint(roomData));
+  };
+
+  const addRoom = () => {
+    if (litersPerRoom !== undefined) {
+      setRooms((prevRooms) => [...prevRooms, litersPerRoom]);
+    }
   };
 
   return (
@@ -149,20 +160,38 @@ export function RoomInformationForm() {
               name="numberOfDoors"
             />
           </article>
-          <div className="flex justify-center">
+          <div className="flex flex-row gap-4 justify-between p-4">
             <button
               className="bg-slate-400 rounded my-2 px-4 py-2"
               type="submit"
             >
               Calculate
             </button>
+            <button
+              onClick={addRoom}
+              className="bg-emerald-400 rounded my-2 px-4 py-2"
+              type="button"
+            >
+              Add Room
+            </button>
           </div>
         </form>
       </div>
-        <div className="flex justify-center">
-          <PaintBucket />
-          <p>Liters {room}</p>
-        </div>
+      <div className="flex justify-center">
+        <PaintBucket />
+        <p className="font-semibold pl-2">{litersPerRoom} Liters</p>
+      </div>
+      <div className="flex justify-center">
+        <ul>
+          {rooms.map((room, index) => (
+            <li key={index} className="flex items-center space-x-2">
+              <House />
+              <p className="font-semibold">Room</p>
+              <p className="font-bold text-blue-600"> {room} Liters</p>
+            </li>
+          ))}
+        </ul>
+      </div>
     </main>
   );
 }
