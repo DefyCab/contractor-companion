@@ -13,6 +13,7 @@ import {
   PanelsTopLeft,
   DoorOpen,
 } from "lucide-react";
+import { BottomNav } from "./bottom-nav";
 
 export function RoomInformationForm() {
   const [litersPerRoom, setLitersPerRoom] = useState<number | undefined>(
@@ -92,7 +93,7 @@ export function RoomInformationForm() {
   const totalLiters = rooms.reduce((sum, room) => sum + room, 0);
 
   return (
-    <main className="bg-slate-100">
+    <main className="bg-slate-200">
       <h1 className="text-center text-xl font-semibold">Room Information</h1>
       <div className="flex justify-center">
         <form action={getRoomData} onSubmit={handleSubmit(onSubmit)}>
@@ -132,13 +133,13 @@ export function RoomInformationForm() {
             <div className="flex flex-row justify-between mt-2">
               <button
                 onClick={addWallField}
-                className="bg-blue-300 text-slate-700 rounded my-2 px-4 py-2"
+                className="bg-blue-300 text-slate-700 rounded my-2 px-4 py-2 shadow-md"
               >
                 Add Wall
               </button>
               <button
                 onClick={removeWallField}
-                className="bg-blue-300  text-slate-700 rounded my-2 px-4 py-2"
+                className="bg-blue-300  text-slate-700 rounded my-2 px-4 py-2 shadow-md"
               >
                 Remove Wall
               </button>
@@ -170,16 +171,16 @@ export function RoomInformationForm() {
               name="numberOfDoors"
             />
           </article>
-          <div className="flex flex-row gap-4 justify-between">
+          <div className="flex flex-row px-2 justify-between">
             <button
-              className="bg-blue-300 rounded my-2 px-4 py-2"
+              className="bg-blue-300 rounded my-2 px-4 py-2 shadow-md"
               type="submit"
             >
               Calculate
             </button>
             <button
               onClick={addRoom}
-              className="bg-emerald-300 rounded my-2 px-4 py-2"
+              className="bg-emerald-300 rounded my-2 px-4 py-2 shadow-md"
               type="button"
             >
               Add Room
@@ -202,13 +203,14 @@ export function RoomInformationForm() {
           ))}
         </ul>
       </div>
-      <div className="flex justify-center items-center space-x-1">
+      <div className="flex justify-center items-center space-x-1 mb-2">
         <PaintBucket />
         <p className="font-semibold">Total </p>
         <p className="font-bold text-green-600">
           {totalLiters ? `${totalLiters} Liters` : ""}
         </p>
       </div>
+      <BottomNav />
     </main>
   );
 }
