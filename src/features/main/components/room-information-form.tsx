@@ -94,7 +94,7 @@ export function RoomInformationForm() {
 
   return (
     <main className="bg-slate-200">
-      <h1 className="text-center text-xl font-semibold">Room Information</h1>
+      <h1 className="text-center text-ls font-semibold text-slate-700">Paint Calculator</h1>
       <div className="flex justify-center">
         <form action={getRoomData} onSubmit={handleSubmit(onSubmit)}>
           <article className="flex justify-between p-2">
