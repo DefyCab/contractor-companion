@@ -5,10 +5,11 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { RoomData } from "../types";
 import { calculatePaint } from "../logic";
+import { PaintBucket } from "lucide-react";
 
 export function RoomInformationForm() {
   const [room, setRoom] = useState<number>();
- 
+
   const {
     register,
     handleSubmit,
@@ -16,7 +17,7 @@ export function RoomInformationForm() {
     reset,
     getValues,
   } = useForm();
-  
+
   const [wallFields, setWallFields] = useState([
     {
       className: "",
@@ -64,8 +65,6 @@ export function RoomInformationForm() {
       wallLength = wallLength + Number(data.wall3);
     }
 
-    console.log(wallLength);
-
     const roomData: RoomData = {
       ceilingHeight: data.ceilingHeight,
       wallLength: wallLength,
@@ -79,7 +78,7 @@ export function RoomInformationForm() {
   return (
     <main className="bg-slate-100">
       <h1 className="text-center text-xl font-semibold">Room Information</h1>
-      <div className="flex h-screen justify-center">
+      <div className="flex justify-center">
         <form action={getRoomData} onSubmit={handleSubmit(onSubmit)}>
           <article className="flex flex-col p-4">
             <div>
@@ -155,12 +154,15 @@ export function RoomInformationForm() {
               className="bg-slate-400 rounded my-2 px-4 py-2"
               type="submit"
             >
-              Send
+              Calculate
             </button>
           </div>
         </form>
       </div>
-      <div>{room}</div>
+        <div className="flex justify-center">
+          <PaintBucket />
+          <p>Liters {room}</p>
+        </div>
     </main>
   );
 }
