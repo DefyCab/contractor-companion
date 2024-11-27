@@ -14,5 +14,7 @@ export function calculatePaint(roomData: RoomData) {
     ceilingHeight * roomData.wallLength -
     (roomData.numberOfDoors * 1.76 + roomData.numberOfWindows * 0.65);
 
-  return Math.round(surfaceInSquareMeters);
+  const litersNeeded = surfaceInSquareMeters / 4.5;
+
+  return Math.round(litersNeeded);
 }
