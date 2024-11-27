@@ -12,8 +12,6 @@ export function RoomInformationForm() {
     undefined
   );
   const [rooms, setRooms] = useState<number[]>([]);
-  const [totalliters, setTotalLiters] = useState<number | undefined>(undefined);
-
   const {
     register,
     handleSubmit,
@@ -83,10 +81,8 @@ export function RoomInformationForm() {
     if (litersPerRoom !== undefined) {
       setRooms((prevRooms) => [...prevRooms, litersPerRoom]);
     }
-    if (litersPerRoom !== undefined) {
-      setTotalLiters((prev) => prev! + litersPerRoom!);
-    }
   };
+  const totalLiters = rooms.reduce((sum, room) => sum + room, 0);
 
   return (
     <main className="bg-slate-100">
@@ -196,8 +192,10 @@ export function RoomInformationForm() {
           ))}
         </ul>
       </div>
-      <p>
-        {totalliters?.toString()}</p>
+      <div className="flex justify-center">
+        <PaintBucket />
+        <p className="font-semibold pl-2">{totalLiters} Total</p>
+      </div>
     </main>
   );
 }
