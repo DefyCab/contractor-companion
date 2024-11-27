@@ -5,15 +5,14 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { RoomData } from "../types";
 import { calculatePaint } from "../logic";
-import { PaintBucket } from "lucide-react";
-import { House } from "lucide-react";
+import { PaintBucket, House, Ruler, HousePlus } from "lucide-react";
 
 export function RoomInformationForm() {
-  // const [litersPerRoom, setLitersPerRoom] = useState<number>();
   const [litersPerRoom, setLitersPerRoom] = useState<number | undefined>(
     undefined
   );
   const [rooms, setRooms] = useState<number[]>([]);
+  const [totalliters, setTotalLiters] = useState<number | undefined>(undefined);
 
   const {
     register,
@@ -84,6 +83,9 @@ export function RoomInformationForm() {
     if (litersPerRoom !== undefined) {
       setRooms((prevRooms) => [...prevRooms, litersPerRoom]);
     }
+    if (litersPerRoom !== undefined) {
+      setTotalLiters((prev) => prev! + litersPerRoom!);
+    }
   };
 
   return (
@@ -91,30 +93,32 @@ export function RoomInformationForm() {
       <h1 className="text-center text-xl font-semibold">Room Information</h1>
       <div className="flex justify-center">
         <form action={getRoomData} onSubmit={handleSubmit(onSubmit)}>
-          <article className="flex flex-col p-4">
-            <div>
-              <label className="text-slate-600">Height</label>
+          <article className="flex justify-between p-2">
+            <div className="flex">
+              <div className="flex mr-4 items-center justify-center">
+                <Ruler />
+              </div>
               <input
                 {...register("ceilingHeight")}
                 className="border-slate-300 border-2 outline-slate-400 p-2 rounded-sm"
-                placeholder="m"
+                placeholder="height m"
                 type="text"
                 id="ceilingHeight"
                 name="ceilingHeight"
               />
             </div>
           </article>
-          <article className="flex flex-col p-4">
+          <article className="flex flex-col p-2">
             {wallFields.map((input, index) => {
               return (
-                <div key={index}>
-                  <label className="text-slate-600">{`Wall ${
-                    index + 1
-                  }`}</label>
+                <div className="flex" key={index}>
+                  <div className="flex mr-4 items-center justify-center">
+                    <HousePlus />
+                  </div>
                   <input
                     {...register(`wall${index}`)}
-                    className="border-slate-300 border-2 outline-slate-400 p-2 rounded-sm m-1"
-                    placeholder="length"
+                    className="border-slate-300 border-2 outline-slate-400 p-2 rounded-sm my-0.5"
+                    placeholder="wall length m"
                     type="text"
                     id="wallLength"
                     name={`wall${index}`}
@@ -122,16 +126,16 @@ export function RoomInformationForm() {
                 </div>
               );
             })}
-            <div className="flex flex-row gap-4 justify-between">
+            <div className="flex flex-row justify-between mt-2">
               <button
                 onClick={addWallField}
-                className="bg-slate-400 rounded my-2 px-4 py-2"
+                className="bg-blue-300 text-slate-700 rounded my-2 px-4 py-2"
               >
                 Add Wall
               </button>
               <button
                 onClick={removeWallField}
-                className="bg-slate-400 rounded my-2 px-4 py-2"
+                className="bg-blue-300  text-slate-700 rounded my-2 px-4 py-2"
               >
                 Remove Wall
               </button>
@@ -162,14 +166,14 @@ export function RoomInformationForm() {
           </article>
           <div className="flex flex-row gap-4 justify-between p-4">
             <button
-              className="bg-slate-400 rounded my-2 px-4 py-2"
+              className="bg-blue-300 rounded my-2 px-4 py-2"
               type="submit"
             >
               Calculate
             </button>
             <button
               onClick={addRoom}
-              className="bg-emerald-400 rounded my-2 px-4 py-2"
+              className="bg-emerald-300 rounded my-2 px-4 py-2"
               type="button"
             >
               Add Room
@@ -192,6 +196,8 @@ export function RoomInformationForm() {
           ))}
         </ul>
       </div>
+      <p>
+        {totalliters?.toString()}</p>
     </main>
   );
 }
