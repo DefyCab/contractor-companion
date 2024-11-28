@@ -89,11 +89,13 @@ export function RoomInformationForm() {
     if (litersPerRoom !== undefined) {
       setRooms((prevRooms) => [...prevRooms, litersPerRoom]);
     }
+
+    reset()
   };
   const totalLiters = rooms.reduce((sum, room) => sum + room, 0);
 
   return (
-    <main className="bg-slate-200">
+    <main className="bg-slate-50 border-2 border-slate-200">
       <h1 className="text-center text-ls font-semibold text-slate-700">Paint Calculator</h1>
       <div className="flex justify-center">
         <form action={getRoomData} onSubmit={handleSubmit(onSubmit)}>
