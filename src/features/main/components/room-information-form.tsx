@@ -1,6 +1,6 @@
 "use client";
 
-import { getRoomData} from "../actions";
+import { getRoomData } from "../actions";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { RoomData } from "../types";
@@ -14,6 +14,7 @@ import {
   DoorOpen,
 } from "lucide-react";
 import { BottomNav } from "./bottom-nav";
+import { redirect } from "next/navigation";
 
 export function RoomInformationForm() {
   const [litersPerRoom, setLitersPerRoom] = useState<number | undefined>(
@@ -90,13 +91,15 @@ export function RoomInformationForm() {
       setRooms((prevRooms) => [...prevRooms, litersPerRoom]);
     }
 
-    reset()
+    reset();
   };
   const totalLiters = rooms.reduce((sum, room) => sum + room, 0);
 
   return (
     <main className="bg-slate-50 border-2 border-slate-200">
-      <h1 className="text-center text-ls font-semibold text-slate-700">Paint Calculator</h1>
+      <h1 className="text-center text-xl font-normal text-slate-700">
+        Paint Calculator
+      </h1>
       <div className="flex justify-center">
         <form action={getRoomData} onSubmit={handleSubmit(onSubmit)}>
           <article className="flex justify-between p-2">
