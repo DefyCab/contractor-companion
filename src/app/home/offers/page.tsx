@@ -4,7 +4,7 @@ export default function Page() {
   return (
     <div className="flex flex-col justify-center">
       <div className="flex justify-center">
-        <Offers />
+        <Offers litersOfPaint={8} />
       </div>
     </div>
   );

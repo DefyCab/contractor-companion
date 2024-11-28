@@ -1,6 +1,6 @@
 "use client";
 
-import { getRoomData, roomInformation } from "../actions";
+import { getRoomData} from "../actions";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { RoomData } from "../types";

@@ -9,7 +9,7 @@ export default function Root() {
   }
   return (
     <div className="flex justify-center">
-      <main className="h-screen bg-slate-50 flex justify-center items-center">
+      <main className="bg-slate-50 flex justify-center items-center">
         <section className="hero p-4">
           <div className="flex flex-col text-center">
             <div className="">
