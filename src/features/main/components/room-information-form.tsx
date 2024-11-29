@@ -95,6 +95,7 @@ export function RoomInformationForm() {
     if (litersPerRoom !== undefined) {
       setRooms((prevRooms) => [...prevRooms, litersPerRoom]);
     }
+    setLitersPerRoom(undefined);
     reset();
   };
   const totalLiters = rooms.reduce((sum, room) => sum + room, 0);
