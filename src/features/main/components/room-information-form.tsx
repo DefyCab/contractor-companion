@@ -14,19 +14,20 @@ import {
   DoorOpen,
 } from "lucide-react";
 import { BottomNav } from "./bottom-nav";
-import { redirect } from "next/navigation";
 
 export function RoomInformationForm() {
   const [litersPerRoom, setLitersPerRoom] = useState<number | undefined>(
     undefined
   );
+  const [notClickedLitersPerRoom, setNotClickedLitersPerRoom] = useState<
+    number | undefined
+  >(undefined);
   const [rooms, setRooms] = useState<number[]>([]);
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
-    getValues,
   } = useForm();
 
   const [wallFields, setWallFields] = useState([
@@ -63,7 +64,7 @@ export function RoomInformationForm() {
     let wallLength = 0;
 
     if (data.wall0) {
-      wallLength = wallLength + Number(data.wall0);
+      wallLength = wallLength! + Number(data.wall0);
     }
 
     if (data.wall1) {
@@ -83,20 +84,23 @@ export function RoomInformationForm() {
       numberOfDoors: data.numberOfDoors,
     };
 
-    setLitersPerRoom(calculatePaint(roomData));
+    setNotClickedLitersPerRoom(calculatePaint(roomData));
+  };
+
+  const setTotal = () => {
+    setLitersPerRoom(notClickedLitersPerRoom);
   };
 
   const addRoom = () => {
     if (litersPerRoom !== undefined) {
       setRooms((prevRooms) => [...prevRooms, litersPerRoom]);
     }
-
     reset();
   };
   const totalLiters = rooms.reduce((sum, room) => sum + room, 0);
 
   return (
-    <main className="bg-slate-50 border-2 border-slate-200">
+    <main className="border-2 border-slate-500 rounded-lg">
       <h1 className="text-center text-xl font-normal text-slate-700">
         Paint Calculator
       </h1>
@@ -180,6 +184,7 @@ export function RoomInformationForm() {
             <button
               className="bg-blue-300 rounded my-2 px-4 py-2 shadow-md"
               type="submit"
+              onClick={setTotal}
             >
               Calculate
             </button>

@@ -9,7 +9,7 @@ export function BottomNav() {
     <main>
       <nav
         onClick={OnClick}
-        className="bg-slate-300 h-12 rounded-md shadow-md flex justify-center items-center cursor-pointer"
+        className="bg-slate-400 h-12 rounded-md shadow-md flex justify-center items-center cursor-pointer"
       >
         <h3 className="text-lg text-slate-800 ">Get Offers!</h3>
       </nav>

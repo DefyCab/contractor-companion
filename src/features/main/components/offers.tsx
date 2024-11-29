@@ -10,9 +10,9 @@ export type Props = {
 export function Offers({ litersOfPaint }: Props) {
   const [isVisible, setIsVisible] = useState(false);
   return (
-    <div className="flex flex-col w-64 justify-center border-2 border-slate-200">
-      <main className="flex flex-col justify-center items-center bg-slate-50">
-        <h3 className="text-2xl mb-2 underline">Offers</h3>
+    <div>
+      <main className="flex flex-col justify-center items-center border-2 border-slate-500 rounded-lg">
+        <h3 className="text-xl mb-2">Offers</h3>
         <article
           onClick={() => {
             setIsVisible(true);
